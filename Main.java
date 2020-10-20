@@ -11,9 +11,11 @@ public class Main {
 
 
     public int[] calculateAllGeneralAlgorithms(ArrayList<Rule> classifier) {
-        int[] res = new int[3];
+        int[] res = new int[6];
         res[0] = Optimizator.optimize(classifier, false);
+        res[4] = DiffCalculator.last_new_rule_stat;
         res[1] = HeuristicOnO.optimizeEfficient(classifier, false, false).size();
+        res[5] = DiffCalculator.last_new_rule_stat;
         res[2] = HeuristicOnO.optimizeEfficient(classifier, false, true).size();
         if (res[0] < res[1]) {
             //throw new AssertionError();
@@ -45,7 +47,7 @@ public class Main {
             for (int[] arr : new int[][]{notShuffledBorder, shuffledBorder, notShuffleRand}) {
                 for (int t = 0; t < 2; t++) {
                     int[] exact = arr == shuffledBorder ? exactShuffeled : exactNotShuffeled;
-                    out.printf("%d %d %.3f ", arr[t], classifier.size()-arr[t], 1.0*(exact[t] - arr[t])/(exact[t] - best[t]) );
+                    out.printf("%d %d %.3f %d ", arr[t], classifier.size()-arr[t], 1.0*(exact[t] - arr[t])/(exact[t] - best[t]), arr[4+t] );
                 }
             }
             out.println();
@@ -101,6 +103,7 @@ public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException, UnknownHostException {
+        Locale.setDefault(Locale.US);
         if (args[0].equals("fib")) {
             new Main().runFib(new File(args[1]));
         }

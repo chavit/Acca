@@ -21,6 +21,7 @@ public class Utils {
         for (Rule r : classifier)
         {
             ans.add(new Rule(r.bits, new HashSet<>(Arrays.asList(0))));
+            ans.get(ans.size()-1).original_action = 0;
         }
         return ans;
     }

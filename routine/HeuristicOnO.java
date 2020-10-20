@@ -240,6 +240,11 @@ public class HeuristicOnO {
             }
             optimizatorState = sequenceOptimal.applyAll();
         }
+
+        if (!isFib) {
+            DiffCalculator.calculate_number_of_modified_results(ans, optimizatorState);
+        }
+
         return Utils.clear(optimizatorState.rules, optimizatorState.isRemoved);
 
     }

@@ -27,6 +27,7 @@ public class GeneralClassifierRoutine {
                 action = 2;
             }
             answer.get(i).actions.add(action);
+            answer.get(i).original_action = action;
         }
 
         Random rnd = new Random(17);
@@ -61,6 +62,7 @@ public class GeneralClassifierRoutine {
                 action = 2;
             }
             answer.get(i).actions.add(action);
+            answer.get(i).original_action = action;
         }
 
         if (p < 1e-6)

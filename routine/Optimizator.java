@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Optimizator {
 
+    static int last_new_rule_stat = -1;
+
     public static int optimize(ArrayList<Rule> ans, boolean isFib)
     {
         OptimizatorState optimizatorState = new OptimizatorState(ans, isFib);
@@ -40,6 +42,9 @@ public class Optimizator {
         }
 
         System.err.println(optimizatorState.calculateSize());
+        if (!isFib) {
+            DiffCalculator.calculate_number_of_modified_results(ans, optimizatorState);
+        }
         return optimizatorState.calculateSize();
     }
 

@@ -9,6 +9,7 @@ public class Rule {
         this.bits = bits.clone();
         this.actions = new HashSet<>(actions);
         calcStars();
+        this.original_action = -1;
     }
 
 
